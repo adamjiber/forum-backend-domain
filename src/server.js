@@ -1,15 +1,15 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const threadRoutes = require('./routes/threadRoutes');
 
 dotenv.config();
 
 const app = express();
 
-// Middleware för att läsa in json
+// Middleware to read json
 app.use(express.json());
 
 //Import routes
-const threadRoutes = require('./routes/threadRoutes');
 app.use('/api', threadRoutes);
 
 // Test routes
