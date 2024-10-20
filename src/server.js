@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const threadRoutes = require('./routes/threadRoutes');
+const postRoutes = require('./routes/postRoutes');
 
 dotenv.config();
 
@@ -9,8 +10,11 @@ const app = express();
 // Middleware to read json
 app.use(express.json());
 
-//Import routes
+//Connect routes
 app.use('/api', threadRoutes);
+
+//Connect postRoutes
+app.use('/api', postRoutes);
 
 // Test routes
 app.get('/', (req, res) => {
