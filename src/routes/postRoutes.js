@@ -8,4 +8,10 @@ router.post('/threads/:threadId/posts', postController.createPost);
 //Get all posts in a specifik thread
 router.get('/threads/:threadId/posts', postController.getPostsByThread);
 
+//Update a post
+router.put('/posts/:id', postController.updatePost);
+
+//Delete a post
+router.delete('/posts/:id', postController.deletePost);
+
 module.exports = router;
