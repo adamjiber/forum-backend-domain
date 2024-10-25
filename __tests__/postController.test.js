@@ -18,3 +18,21 @@ describe('POST /threads/:threadId/posts', () => {
     expect(response.body).toHaveProperty('content', 'Detta är ett testinlägg');
   });
 });
+
+describe('GET /threads/:threadId/posts', () => {
+  it('hämtar alla inlägg i en tråd', async () => {
+    const response = await request(app).get('/api/threads/1/posts');
+    expect(response.status).toBe(200);
+    expect(Array.isArray(response.body)).toBe(true);
+  });
+});
+
+describe('PUT /posts/:id', () => {
+  it('Uppdaterar ett inlägg', async() => {
+    const response = await request(app)
+    .put('/api/posts/1')
+    .send({ content: 'Uppdaterat innehåll' });
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('content', 'Uppdaterat innehåll');
+  });
+});
