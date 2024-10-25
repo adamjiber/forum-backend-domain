@@ -36,3 +36,11 @@ describe('PUT /posts/:id', () => {
     expect(response.body).toHaveProperty('content', 'Uppdaterat innehåll');
   });
 });
+
+describe('DELETE /posts/:id', () => {
+  it('raderar ett inlägg', async () => {
+    const response = await request(app).delete('/api/posts/1');
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('message', 'Inlägget har raderats');
+  });
+});
