@@ -47,5 +47,5 @@ exports.deleteThread = (req, res) => {
   };
 
   fakeThreads.splice(threadIndex, 1);
-  res.status(200).json({ message: "Thread has been deleted "});
+  res.status(200).json({ message: "Thread has been deleted"});
 };
