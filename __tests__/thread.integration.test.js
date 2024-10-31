@@ -31,3 +31,31 @@ describe('POST /api/threads', () => {
     expect(response.body).toHaveProperty('title', 'Test-tråd');
   });
 });
+
+describe('PUT /api/threads/:id', () => {
+  it('Uppdaterar en tråd och kontrollerar Content-Type', async () => {
+    //Skapar en ny tråd att uppdatera
+    const newThread = await request(app)
+    .post('/api/threads')
+    .send({
+      title: 'Gamla titeln',
+      content: 'Gammalt innehåll',
+      userId: 1
+    });
+//Uppdaterar tråden
+const response = await request(app)
+.put(`/api/threads/${newThread.body.id}`)
+.send({
+  title: 'Uppdaterad title',
+  content: 'Uppdaterat innehåll'
+});
+
+console.log(response.body);
+
+expect(response.status).toBe(200);
+expect(response.headers['content-type']).toMatch(/json/);
+expect(response.body).toHaveProperty('title', 'Uppdaterad title');
+expect(response.body.content).toHaveProperty('content', 'Uppdaterat innehåll');
+
+  });
+});
