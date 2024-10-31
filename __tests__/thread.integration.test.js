@@ -16,3 +16,18 @@ describe('GET /api/threads', () => {
     expect(response.headers['content-type']).toMatch(/json/);
   });
 });
+
+describe('POST /api/threads', () => {
+  it('skapar en ny tråd och kontrollerar Content-Type och Location-header', async () => {
+    const response = await request(app)
+    .post('/api/threads')
+    .send({
+      title: 'Test-tråd',
+      content: 'Innehåll för test-tråden',
+      userId: 1
+    });
+    expect(response.status).toBe(201);
+    expect(response.headers['content-type']).toMatch(/json/);
+    expect(response.body).toHaveProperty('title', 'Test-tråd');
+  });
+});
