@@ -4,6 +4,7 @@
   "main": "src/server.js",
   "scripts": {
     "test": "jest --verbose",
+    "test:integration": "jest --verbose --testMatch '**/*.integration.test.js'",
     "start": "node src/server.js"
   },
   "keywords": [],

@@ -3,15 +3,15 @@ const router = express.Router();
 const threadController = require('../controllers/threadController');
 
 //Route to create new thread
-router.post('/threads', threadController.createThread);
+router.post('/', threadController.createThread);
 
 //Route to get all threads
-router.get('/threads', threadController.getAllThreads);
+router.get('/', threadController.getAllThreads);
 
 //Route to update thread
-router.put('/threads/:id', threadController.updateThread);
+router.put('/:id', threadController.updateThread);
 
 //Route to delete a thread
-router.delete('/threads/:id', threadController.deleteThread);
+router.delete('/:id', threadController.deleteThread);
 
 module.exports = router;

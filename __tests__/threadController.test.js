@@ -4,7 +4,7 @@ const app = express();
 const threadRoutes = require('../src/routes/threadRoutes');
 
 app.use(express.json());
-app.use('/api', threadRoutes);
+app.use('/api/threads', threadRoutes);
 
 //Test to create new thread
 describe('POST /api/threads', () => {
@@ -41,6 +41,7 @@ describe('PUT /api/threads/:id', () => {
   });
 });
 
+//DELETE thread
 describe('DELETE /api/threads/:id', () => {
   it('raderar en tråd', async () => {
     const response = await request(app).delete('/api/threads/1');
