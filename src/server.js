@@ -17,7 +17,7 @@ app.use(passport.initialize());
 app.use('/api/threads', threadRoutes);
 
 //Connect postRoutes
-app.use('/api/threads/:threadId/posts', postRoutes);
+app.use('/api', postRoutes);
 
 // Test routes
 app.get('/', (req, res) => {
@@ -29,3 +29,4 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
+console.log('REQUIRE_AUTH:', process.env.REQUIRE_AUTH);
